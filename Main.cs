@@ -5,8 +5,8 @@ class Program
     static void Main()
     {
         //Task1();
-        Task2();
-        //Task3();
+        //Task2();
+        Task3();
         //Task4();
     }
 
@@ -62,7 +62,25 @@ class Program
     static void Task3()
     {
         Console.WriteLine("This is Task #3 of Exam Unit 3 \n");
+
+        string json = File.ReadAllText("example_files/nodesTEST.json");
+        Node rootNode = JsonSerializer.Deserialize<Node>(json);
+
+        int sum = CalculateSum(rootNode);
+        Console.WriteLine($"Sum = {sum}");
+
+        int CalculateSum(Node node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            return node.value + CalculateSum(node.left) + CalculateSum(node.right);
+        }
+        
     }
+
+
 
     static void Task4()
     {
@@ -195,4 +213,11 @@ class Program
         }
         Console.WriteLine();
     }
+}
+
+class Node
+{
+    public int value { get; set; }
+    public Node left { get; set; }
+    public Node right { get; set; }
 }
