@@ -1,19 +1,13 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.Json;
-using System.Text.RegularExpressions;
+﻿using System.Text.Json;
 
 class Program
 {
     static void Main()
     {
-        Task1();
+        //Task1();
         Task2();
-        Task3();
-        Task4();
+        //Task3();
+        //Task4();
     }
 
     static void Task1()
@@ -54,6 +48,15 @@ class Program
     static void Task2()
     {
         Console.WriteLine("This is Task #2 of Exam Unit 3 \n");
+
+        string json = File.ReadAllText("example_files/arrays.json");
+        List<object> data = JsonSerializer.Deserialize<List<object>>(json);
+
+        List<int> numbers = new List<int>();
+        task2.Flatten(data, numbers);
+
+        string numbersString = string.Join(",", numbers);
+        Console.WriteLine($"[{numbersString}]");
     }
 
     static void Task3()
@@ -65,12 +68,11 @@ class Program
     {
         Console.WriteLine("This is Task #4 of Exam Unit 3 \n");
 
-
         string json = File.ReadAllText("example_files/books.json");
-        List<Book> books = JsonSerializer.Deserialize<List<Book>>(json);
+        List<task4> books = JsonSerializer.Deserialize<List<task4>>(json);
 
         //Task 1: Return only books starting with `The`
-        List<Book> booksStartingWithThe = Book.GetBooksStartingWithThe(books);
+        List<task4> booksStartingWithThe = task4.GetBooksStartingWithThe(books);
         Console.WriteLine("Books starting with 'The':");
         foreach (var book in booksStartingWithThe)
         {
@@ -80,7 +82,7 @@ class Program
         Console.WriteLine();
 
         //Task 2: Return only books written by authors with a 't' in their name
-        List<Book> booksByAuthorsWithTInName = Book.GetBooksByAuthorsWithTInName(books);
+        List<task4> booksByAuthorsWithTInName = task4.GetBooksByAuthorsWithTInName(books);
         Console.WriteLine("Books written by authors with 't' in their name:");
         foreach (var book in booksByAuthorsWithTInName)
         {
@@ -89,11 +91,11 @@ class Program
         Console.WriteLine();
 
         // Task 3: The number of books written after 1992
-        int numberOfBooksAfter1992 = Book.GetNumberOfBooksAfterYear(books, 1992);
+        int numberOfBooksAfter1992 = task4.GetNumberOfBooksAfterYear(books, 1992);
         Console.WriteLine($"Number of books written after 1992: {numberOfBooksAfter1992}");
 
         // Task 4: The number of books written before `2004`
-        int numberOfBooksBefore2004 = Book.GetNumberOfBooksBeforeYear(books, 2004);
+        int numberOfBooksBefore2004 = task4.GetNumberOfBooksBeforeYear(books, 2004);
         Console.WriteLine($"Number of books written before 2004: {numberOfBooksBefore2004}");
         Console.WriteLine();
 
@@ -102,7 +104,7 @@ class Program
         Console.WriteLine("Write the first and last name of an author to get their books' ISBNs:");
         string authorFullName = Console.ReadLine();
 
-        Dictionary<string, List<string>> authorNamesWithISBN = Book.GetAuthorNamesWithISBN(books, authorFullName);
+        Dictionary<string, List<string>> authorNamesWithISBN = task4.GetAuthorNamesWithISBN(books, authorFullName);
 
         if (authorNamesWithISBN.ContainsKey(authorFullName))
         {
@@ -122,7 +124,7 @@ class Program
         string alphabeticallyChoice = Console.ReadLine();
         if (alphabeticallyChoice == "ascending")
         {
-            List<Book> booksInAlphabeticalOrder = Book.GetBookInAlphabeticalOrderAscending(books);
+            List<task4> booksInAlphabeticalOrder = task4.GetBookInAlphabeticalOrderAscending(books);
             Console.WriteLine("Books in ascending alphabetical order:");
             foreach (var book in booksInAlphabeticalOrder)
             {
@@ -132,7 +134,7 @@ class Program
         }
         else if (alphabeticallyChoice == "descending")
         {
-            List<Book> booksInAlphabeticalOrder = Book.GetBookInAlphabeticalOrderDescending(books);
+            List<task4> booksInAlphabeticalOrder = task4.GetBookInAlphabeticalOrderDescending(books);
             Console.WriteLine("Books in descending alphabetical order:");
             foreach (var book in booksInAlphabeticalOrder)
             {
@@ -145,13 +147,12 @@ class Program
             Console.WriteLine("Invalid choice");
         }
 
-
         //Task 7: List books chronologically assending or decendig
         Console.WriteLine("Would you like the books ordered chronologically ascending or descending?");
         string chronologicallyChoice = Console.ReadLine();
         if (chronologicallyChoice == "ascending")
         {
-            List<Book> booksInChronologicalOrder = Book.GetBookInChronologicalOrderAscending(books);
+            List<task4> booksInChronologicalOrder = task4.GetBookInChronologicalOrderAscending(books);
             Console.WriteLine("Books in ascending chronolgical order:");
             foreach (var book in booksInChronologicalOrder)
             {
@@ -161,7 +162,7 @@ class Program
         }
         else if (chronologicallyChoice == "descending")
         {
-            List<Book> booksInChronologicalOrder = Book.GetBookInChronologicalOrderDescending(books);
+            List<task4> booksInChronologicalOrder = task4.GetBookInChronologicalOrderDescending(books);
             Console.WriteLine("Books in descending chronolgical order:");
             foreach (var book in booksInChronologicalOrder)
             {
@@ -176,7 +177,7 @@ class Program
 
         //Task 8: List books grouped by author last name
 
-        List<Book> booksGroupedByAuthorLastName = Book.GetBookGroupedAuthorLastName(books);
+        List<task4> booksGroupedByAuthorLastName = task4.GetBookGroupedAuthorLastName(books);
         Console.WriteLine("Books grouped by the author's last name:");
         foreach (var book in booksGroupedByAuthorLastName)
         {
@@ -186,7 +187,7 @@ class Program
 
         //Task 9: Lits books grouped by author first name
 
-        List<Book> booksGroupedByAuthorFirstName = Book.GetBookGroupedAuthorFirstName(books);
+        List<task4> booksGroupedByAuthorFirstName = task4.GetBookGroupedAuthorFirstName(books);
         Console.WriteLine("Books grouped by the author's first name:");
         foreach (var book in booksGroupedByAuthorFirstName)
         {
