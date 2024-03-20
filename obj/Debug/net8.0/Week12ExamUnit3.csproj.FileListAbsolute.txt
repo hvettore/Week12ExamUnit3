@@ -1,0 +1,15 @@
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.AssemblyInfoInputs.cache
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.AssemblyInfo.cs
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.csproj.CoreCompileInputs.cache
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.sourcelink.json
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\bin\Debug\net8.0\Week12ExamUnit3.exe
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\bin\Debug\net8.0\Week12ExamUnit3.deps.json
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\bin\Debug\net8.0\Week12ExamUnit3.runtimeconfig.json
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\bin\Debug\net8.0\Week12ExamUnit3.dll
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\bin\Debug\net8.0\Week12ExamUnit3.pdb
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.dll
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\refint\Week12ExamUnit3.dll
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.pdb
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\Week12ExamUnit3.genruntimeconfig.cache
+D:\University\UiA\Semester 4\Programming 2\Week12ExamUnit3\obj\Debug\net8.0\ref\Week12ExamUnit3.dll
