@@ -1,5 +1,3 @@
-using System;
-
 public static class task1
 {
     private const double inchesToMillimetersConversion = 25.4;
