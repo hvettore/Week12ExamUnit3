@@ -6,7 +6,7 @@ class Program
     {
         //Task1();
         //Task2();
-        Task3();
+        //Task3();
         //Task4();
     }
 
@@ -63,24 +63,17 @@ class Program
     {
         Console.WriteLine("This is Task #3 of Exam Unit 3 \n");
 
-        string json = File.ReadAllText("example_files/nodesTEST.json");
-        Node rootNode = JsonSerializer.Deserialize<Node>(json);
+        string json = File.ReadAllText("example_files/nodes.json");
+        Node mainNode = JsonSerializer.Deserialize<Node>(json);
 
-        int sum = CalculateSum(rootNode);
+        int sum = task3.ValueSum(mainNode);
+        int deepestLevel = task3.LocateDeepestLevel(mainNode);
+        int nodeCount = task3.NodeCount(mainNode);
+      
         Console.WriteLine($"Sum = {sum}");
-
-        int CalculateSum(Node node)
-        {
-            if (node == null)
-            {
-                return 0;
-            }
-            return node.value + CalculateSum(node.left) + CalculateSum(node.right);
-        }
-        
+        Console.WriteLine($"Deepest level = {deepestLevel}");
+        Console.WriteLine($"Nodes = {nodeCount}");
     }
-
-
 
     static void Task4()
     {
@@ -215,9 +208,3 @@ class Program
     }
 }
 
-class Node
-{
-    public int value { get; set; }
-    public Node left { get; set; }
-    public Node right { get; set; }
-}
