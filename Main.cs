@@ -6,9 +6,9 @@ class Program
     {
         Console.Clear();
         Task1();
-        //Task2();
-        //Task3();
-        //Task4();
+        Task2();
+        Task3();
+        Task4();
     }
 
     static void Task1()
@@ -44,10 +44,12 @@ class Program
         string inputName = InputChecker.GetString() ?? string.Empty;
         string greetingPhrase = global::Task1.ReturnGreeting(inputName);
         Console.WriteLine(greetingPhrase);
+        new Prompt().WaitForEnterKey();
     }
 
     static void Task2()
     {
+        Console.Clear();
         Console.WriteLine(TextTask2.task2Introduction + GeneralText.newLine);
 
         string json = File.ReadAllText(TextTask2.task2JSONRead);
@@ -58,10 +60,12 @@ class Program
 
         string numbersString = string.Join(GeneralText.commaSeparator, numbers);
         Console.WriteLine($"[{numbersString}]");
+        new Prompt().WaitForEnterKey();
     }
 
     static void Task3()
     {
+        Console.Clear();
         Console.WriteLine(TextTask3.task3Introduction + GeneralText.newLine);
 
         string json = File.ReadAllText(TextTask3.task3JSONRead);
@@ -74,11 +78,12 @@ class Program
         Console.WriteLine(TextTask3.task3Part1 + sum);
         Console.WriteLine(TextTask3.task3Part2 + deepestLevel);
         Console.WriteLine(TextTask3.task3Part3 + nodeCount + GeneralText.newLine);
+        new Prompt().WaitForEnterKey();
     }
 
     static void Task4()
     {
-        Console.WriteLine(TextTask4.task4Introduction);
+        Console.WriteLine(TextTask4.task4Introduction + GeneralText.newLine);
 
         string json = File.ReadAllText(TextTask4.task4JSONRead);
         List<Task4> books = JsonSerializer.Deserialize<List<Task4>>(json);
@@ -91,8 +96,10 @@ class Program
             Console.WriteLine(GeneralText.hifenSpace + book.title);
         }
         Console.WriteLine(GeneralText.newLine);
+        new Prompt().WaitForEnterKey();
 
         //Task 2: Return only books written by authors with a 't' in their name
+        Console.Clear();
         List<Task4> booksByAuthorsWithTInName = global::Task4.GetBooksByAuthorsWithTInName(books);
         Console.WriteLine(TextTask4.task4Part2Prompt);
         foreach (var book in booksByAuthorsWithTInName)
@@ -100,16 +107,20 @@ class Program
             Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
         }
         Console.WriteLine(GeneralText.newLine);
+        new Prompt().WaitForEnterKey();
 
         // Task 3: The number of books written after 1992
+        Console.Clear();
         int numberOfBooksAfter1992 = global::Task4.GetNumberOfBooksAfterYear(books, 1992);
         Console.WriteLine(TextTask4.task4Part3Prompt + numberOfBooksAfter1992 + GeneralText.newLine);
 
         // Task 4: The number of books written before `2004`
         int numberOfBooksBefore2004 = global::Task4.GetNumberOfBooksBeforeYear(books, 2004);
         Console.WriteLine(TextTask4.task4Part4Prompt + numberOfBooksBefore2004 + GeneralText.newLine);
+        new Prompt().WaitForEnterKey();
 
         // Task 5: Return isbn book numbers based on author input
+        Console.Clear();
         Console.WriteLine(TextTask4.task4Part5Prompt);
         string authorFullName = Console.ReadLine();
         Dictionary<string, List<string>> authorNamesWithISBN = global::Task4.GetAuthorNamesWithISBN(books, authorFullName);
@@ -125,8 +136,10 @@ class Program
         {
             Console.WriteLine(TextTask4.task4Part5Invalid + authorFullName);
         }
+        new Prompt().WaitForEnterKey();
 
         //Task 6: List books alphabetically assending or decendig 
+        Console.Clear();
         Console.WriteLine(TextTask4.task4Part6Prompt);
         string alphabeticallyChoice = Console.ReadLine();
         if (alphabeticallyChoice == GeneralText.ascendingInput)
@@ -153,8 +166,10 @@ class Program
         {
             Console.WriteLine(TextTask4.task4OrderInvalid);
         }
+        new Prompt().WaitForEnterKey();
 
         //Task 7: List books chronologically assending or decendig
+        Console.Clear();
         Console.WriteLine(TextTask4.task4Part7Prompt);
         string chronologicallyChoice = Console.ReadLine();
         if (chronologicallyChoice == GeneralText.ascendingInput)
@@ -181,8 +196,10 @@ class Program
         {
             Console.WriteLine(TextTask4.task4OrderInvalid);
         }
+        new Prompt().WaitForEnterKey();
 
         //Task 8: List books grouped by author last name
+        Console.Clear();
         List<Task4> booksGroupedByAuthorLastName = global::Task4.GetBookGroupedAuthorLastName(books);
         Console.WriteLine(TextTask4.task4Part8);
         foreach (var book in booksGroupedByAuthorLastName)
@@ -190,8 +207,10 @@ class Program
             Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
         }
         Console.WriteLine(GeneralText.newLine);
+        new Prompt().WaitForEnterKey();
 
         //Task 9: Lits books grouped by author first name
+        Console.Clear();
         List<Task4> booksGroupedByAuthorFirstName = global::Task4.GetBookGroupedAuthorFirstName(books);
         Console.WriteLine(TextTask4.task4Part9);
         foreach (var book in booksGroupedByAuthorFirstName)

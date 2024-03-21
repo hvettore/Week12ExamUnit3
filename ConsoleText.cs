@@ -7,11 +7,12 @@ public class GeneralText
     public const string descendingInput = "descending";
     public const string commaSeparator = ",";
     public const string extraSpace = @"\s+";
+    public const string continuationPrompt = "Please press enter to continue.";
 }
 public class TextTask1
 {
 
-    public const string task1Introduction = "This is Task #1 of Exam Unit 3 \n";
+    public const string task1Introduction = "This is Task #1 of Exam Unit 3";
     public const string task1Part1Question = "Enter a number to be squared.";
     public const string task1Part1Result = "The square of the input given is ";
     public const string task1Part2Question = "Enter a length in inches to be converted to millimeters.";
@@ -51,8 +52,8 @@ public class TextTask4
     public const string task4Part1Query = "The";
     public const string task4Part2Prompt = "Books written by authors with 't' in their name:";
     public const string task4Part2Query = "t";
-    public const string task4Part3Prompt = "Number of books written after 1992:";
-    public const string task4Part4Prompt = "Number of books written before 2004:";
+    public const string task4Part3Prompt = "Number of books written after 1992: ";
+    public const string task4Part4Prompt = "Number of books written before 2004: ";
     public const string task4Part5Prompt = "Write the first and last name of an author to get their books' ISBNs:";
     public const string task4Part5Valid = "ISBN numbers of books written by ";
     public const string task4Part5Invalid = "No books found for author: ";
