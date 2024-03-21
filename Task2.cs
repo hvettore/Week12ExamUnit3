@@ -1,5 +1,5 @@
 using System.Text.Json;
-public class task2
+public class Task2
 {
     public static void Flatten(List<object> data, List<int> numbers)
     {

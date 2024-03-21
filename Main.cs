@@ -1,7 +1,5 @@
 ﻿using System.Text.Json;
 
-
-
 class Program
 {
     static void Main()
@@ -15,199 +13,192 @@ class Program
 
     static void Task1()
     {
-        Console.WriteLine(Text.task1Introduction);
+        Console.WriteLine(TextTask1.task1Introduction);
 
-        Console.WriteLine(Text.task1Part1Question);
+        Console.WriteLine(TextTask1.task1Part1Question);
         double inputNumberToSquare = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
-        double squaredResult = task1.ReturnSquareNumber(inputNumberToSquare);
-        Console.WriteLine(Text.task1Part1Result + squaredResult + Text.newLine);
+        double squaredResult = global::Task1.ReturnSquareNumber(inputNumberToSquare);
+        Console.WriteLine(TextTask1.task1Part1Result + squaredResult + GeneralText.newLine);
 
-        Console.WriteLine("Enter a length in inches to be converted to millimeters.");
+        Console.WriteLine(TextTask1.task1Part2Question);
         double inputLength = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
-        double inchesToMillimetersResult = task1.ReturnLengthInMillimeters(inputLength);
-        Console.WriteLine($"{inputLength} inches is " + inchesToMillimetersResult + " millimiters\n");
+        double inchesToMillimetersResult = global::Task1.ReturnLengthInMillimeters(inputLength);
+        Console.WriteLine(inputLength + TextTask1.task1Part2Result1 + inchesToMillimetersResult + TextTask1.task1Part2Result2 + GeneralText.newLine);
 
-        Console.WriteLine("Enter a number to find it's root.");
+        Console.WriteLine(TextTask1.task1Part3Question);
         double inputNumberRoot = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
-        double rootResult = task1.ReturnRootNumber(inputNumberRoot);
-        Console.WriteLine($"The root of {inputNumberRoot} is " + rootResult + "\n");
+        double rootResult = global::Task1.ReturnRootNumber(inputNumberRoot);
+        Console.WriteLine(TextTask1.task1Part3Result + rootResult + GeneralText.newLine);
 
-        Console.WriteLine("Enter number to be cubed.");
+        Console.WriteLine(TextTask1.task1Part4Question);
         double inputNumberToCube = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
-        double cubedResult = task1.ReturnCubedNumber(inputNumberToCube);
-        Console.WriteLine($"The cube of {inputNumberToCube} is " + cubedResult + "\n");
+        double cubedResult = global::Task1.ReturnCubedNumber(inputNumberToCube);
+        Console.WriteLine(TextTask1.task1Part4Result + cubedResult + GeneralText.newLine);
 
-        Console.WriteLine("Enter radius of a circle.");
+        Console.WriteLine(TextTask1.task1Part5Question);
         double inputCircleRadius = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
-        double circleAreaResult = task1.ReturnCircleArea(inputCircleRadius);
-        Console.WriteLine($"If a circle has a radius of {inputCircleRadius}, it's area will be " + circleAreaResult + "\n");
+        double circleAreaResult = global::Task1.ReturnCircleArea(inputCircleRadius);
+        Console.WriteLine(TextTask1.task1Part5Result+ circleAreaResult + GeneralText.newLine);
 
-        Console.WriteLine("Please enter your name.");
+        Console.WriteLine(TextTask1.task1Part6Question);
         string inputName = InputChecker.GetString() ?? string.Empty;
-        string greetingPhrase = task1.ReturnGreeting(inputName);
+        string greetingPhrase = global::Task1.ReturnGreeting(inputName);
         Console.WriteLine(greetingPhrase);
     }
 
     static void Task2()
     {
-        Console.WriteLine("This is Task #2 of Exam Unit 3 \n");
+        Console.WriteLine(TextTask2.task2Introduction + GeneralText.newLine);
 
-        string json = File.ReadAllText("example_files/arrays.json");
+        string json = File.ReadAllText(TextTask2.task2JSONRead);
         List<object> data = JsonSerializer.Deserialize<List<object>>(json);
 
         List<int> numbers = new List<int>();
-        task2.Flatten(data, numbers);
+        global::Task2.Flatten(data, numbers);
 
-        string numbersString = string.Join(",", numbers);
+        string numbersString = string.Join(GeneralText.commaSeparator, numbers);
         Console.WriteLine($"[{numbersString}]");
     }
 
     static void Task3()
     {
-        Console.WriteLine("This is Task #3 of Exam Unit 3 \n");
+        Console.WriteLine(TextTask3.task3Introduction + GeneralText.newLine);
 
-        string json = File.ReadAllText("example_files/nodes.json");
+        string json = File.ReadAllText(TextTask3.task3JSONRead);
         Node mainNode = JsonSerializer.Deserialize<Node>(json);
 
-        int sum = task3.ValueSum(mainNode);
-        int deepestLevel = task3.LocateDeepestLevel(mainNode);
-        int nodeCount = task3.NodeCount(mainNode);
+        int sum = global::Task3.ValueSum(mainNode);
+        int deepestLevel = global::Task3.LocateDeepestLevel(mainNode);
+        int nodeCount = global::Task3.NodeCount(mainNode);
       
-        Console.WriteLine($"Sum = {sum}");
-        Console.WriteLine($"Deepest level = {deepestLevel}");
-        Console.WriteLine($"Nodes = {nodeCount}");
+        Console.WriteLine(TextTask3.task3Part1 + sum);
+        Console.WriteLine(TextTask3.task3Part2 + deepestLevel);
+        Console.WriteLine(TextTask3.task3Part3 + nodeCount + GeneralText.newLine);
     }
 
     static void Task4()
     {
-        Console.WriteLine("This is Task #4 of Exam Unit 3 \n");
+        Console.WriteLine(TextTask4.task4Introduction);
 
-        string json = File.ReadAllText("example_files/books.json");
-        List<task4> books = JsonSerializer.Deserialize<List<task4>>(json);
+        string json = File.ReadAllText(TextTask4.task4JSONRead);
+        List<Task4> books = JsonSerializer.Deserialize<List<Task4>>(json);
 
         //Task 1: Return only books starting with `The`
-        List<task4> booksStartingWithThe = task4.GetBooksStartingWithThe(books);
-        Console.WriteLine("Books starting with 'The':");
+        List<Task4> booksStartingWithThe = global::Task4.GetBooksStartingWithThe(books);
+        Console.WriteLine(TextTask4.task4Part1Prompt);
         foreach (var book in booksStartingWithThe)
         {
-            Console.WriteLine($"- {book.title}");
+            Console.WriteLine(GeneralText.hifenSpace + book.title);
         }
-
-        Console.WriteLine();
+        Console.WriteLine(GeneralText.newLine);
 
         //Task 2: Return only books written by authors with a 't' in their name
-        List<task4> booksByAuthorsWithTInName = task4.GetBooksByAuthorsWithTInName(books);
-        Console.WriteLine("Books written by authors with 't' in their name:");
+        List<Task4> booksByAuthorsWithTInName = global::Task4.GetBooksByAuthorsWithTInName(books);
+        Console.WriteLine(TextTask4.task4Part2Prompt);
         foreach (var book in booksByAuthorsWithTInName)
         {
-            Console.WriteLine($"- {book.title} by {book.author}");
+            Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
         }
-        Console.WriteLine();
+        Console.WriteLine(GeneralText.newLine);
 
         // Task 3: The number of books written after 1992
-        int numberOfBooksAfter1992 = task4.GetNumberOfBooksAfterYear(books, 1992);
-        Console.WriteLine($"Number of books written after 1992: {numberOfBooksAfter1992}");
+        int numberOfBooksAfter1992 = global::Task4.GetNumberOfBooksAfterYear(books, 1992);
+        Console.WriteLine(TextTask4.task4Part3Prompt + numberOfBooksAfter1992 + GeneralText.newLine);
 
         // Task 4: The number of books written before `2004`
-        int numberOfBooksBefore2004 = task4.GetNumberOfBooksBeforeYear(books, 2004);
-        Console.WriteLine($"Number of books written before 2004: {numberOfBooksBefore2004}");
-        Console.WriteLine();
+        int numberOfBooksBefore2004 = global::Task4.GetNumberOfBooksBeforeYear(books, 2004);
+        Console.WriteLine(TextTask4.task4Part4Prompt + numberOfBooksBefore2004 + GeneralText.newLine);
 
         // Task 5: Return isbn book numbers based on author input
-
-        Console.WriteLine("Write the first and last name of an author to get their books' ISBNs:");
+        Console.WriteLine(TextTask4.task4Part5Prompt);
         string authorFullName = Console.ReadLine();
-
-        Dictionary<string, List<string>> authorNamesWithISBN = task4.GetAuthorNamesWithISBN(books, authorFullName);
-
+        Dictionary<string, List<string>> authorNamesWithISBN = global::Task4.GetAuthorNamesWithISBN(books, authorFullName);
         if (authorNamesWithISBN.ContainsKey(authorFullName))
         {
-            Console.WriteLine($"ISBN numbers of books written by {authorFullName}:");
+            Console.WriteLine(TextTask4.task4Part5Valid + authorFullName);
             foreach (var isbn in authorNamesWithISBN[authorFullName])
             {
-                Console.WriteLine($"- {isbn}");
+                Console.WriteLine(GeneralText.hifenSpace + isbn);
             }
         }
         else
         {
-            Console.WriteLine($"No books found for author: {authorFullName}");
+            Console.WriteLine(TextTask4.task4Part5Invalid + authorFullName);
         }
 
         //Task 6: List books alphabetically assending or decendig 
-        Console.WriteLine("Would you like the books ordered alphabetically ascending or descending?");
+        Console.WriteLine(TextTask4.task4Part6Prompt);
         string alphabeticallyChoice = Console.ReadLine();
-        if (alphabeticallyChoice == "ascending")
+        if (alphabeticallyChoice == GeneralText.ascendingInput)
         {
-            List<task4> booksInAlphabeticalOrder = task4.GetBookInAlphabeticalOrderAscending(books);
-            Console.WriteLine("Books in ascending alphabetical order:");
+            List<Task4> booksInAlphabeticalOrder = global::Task4.GetBookInAlphabeticalOrderAscending(books);
+            Console.WriteLine(TextTask4.task4Part6AscendingOutput);
             foreach (var book in booksInAlphabeticalOrder)
             {
-                Console.WriteLine($"- {book.title} by {book.author}");
+                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
             }
-            Console.WriteLine();
+            Console.WriteLine(GeneralText.newLine);
         }
-        else if (alphabeticallyChoice == "descending")
+        else if (alphabeticallyChoice == GeneralText.descendingInput)
         {
-            List<task4> booksInAlphabeticalOrder = task4.GetBookInAlphabeticalOrderDescending(books);
-            Console.WriteLine("Books in descending alphabetical order:");
+            List<Task4> booksInAlphabeticalOrder = global::Task4.GetBookInAlphabeticalOrderDescending(books);
+            Console.WriteLine(TextTask4.task4Part6DescendingOutput);
             foreach (var book in booksInAlphabeticalOrder)
             {
-                Console.WriteLine($"- {book.title} by {book.author}");
+                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
             }
-            Console.WriteLine();
+            Console.WriteLine(GeneralText.newLine);
         }
         else
         {
-            Console.WriteLine("Invalid choice");
+            Console.WriteLine(TextTask4.task4OrderInvalid);
         }
 
         //Task 7: List books chronologically assending or decendig
-        Console.WriteLine("Would you like the books ordered chronologically ascending or descending?");
+        Console.WriteLine(TextTask4.task4Part7Prompt);
         string chronologicallyChoice = Console.ReadLine();
-        if (chronologicallyChoice == "ascending")
+        if (chronologicallyChoice == GeneralText.ascendingInput)
         {
-            List<task4> booksInChronologicalOrder = task4.GetBookInChronologicalOrderAscending(books);
-            Console.WriteLine("Books in ascending chronolgical order:");
+            List<Task4> booksInChronologicalOrder = global::Task4.GetBookInChronologicalOrderAscending(books);
+            Console.WriteLine(TextTask4.task4Part7AscendingOutput);
             foreach (var book in booksInChronologicalOrder)
             {
                 Console.WriteLine($"- {book.title} written in {book.publication_year}");
             }
-            Console.WriteLine();
+            Console.WriteLine(GeneralText.newLine);
         }
-        else if (chronologicallyChoice == "descending")
+        else if (chronologicallyChoice == GeneralText.descendingInput)
         {
-            List<task4> booksInChronologicalOrder = task4.GetBookInChronologicalOrderDescending(books);
-            Console.WriteLine("Books in descending chronolgical order:");
+            List<Task4> booksInChronologicalOrder = global::Task4.GetBookInChronologicalOrderDescending(books);
+            Console.WriteLine(TextTask4.task4Part7DescendingOutput);
             foreach (var book in booksInChronologicalOrder)
             {
-                Console.WriteLine($"- {book.title} written in {book.publication_year}");
+                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4Part7Output + book.publication_year);
             }
-            Console.WriteLine();
+            Console.WriteLine(GeneralText.newLine);
         }
         else
         {
-            Console.WriteLine("Invalid choice");
+            Console.WriteLine(TextTask4.task4OrderInvalid);
         }
 
         //Task 8: List books grouped by author last name
-
-        List<task4> booksGroupedByAuthorLastName = task4.GetBookGroupedAuthorLastName(books);
-        Console.WriteLine("Books grouped by the author's last name:");
+        List<Task4> booksGroupedByAuthorLastName = global::Task4.GetBookGroupedAuthorLastName(books);
+        Console.WriteLine(TextTask4.task4Part8);
         foreach (var book in booksGroupedByAuthorLastName)
         {
-            Console.WriteLine($"- {book.title} by {book.author}");
+            Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
         }
-        Console.WriteLine();
+        Console.WriteLine(GeneralText.newLine);
 
         //Task 9: Lits books grouped by author first name
-
-        List<task4> booksGroupedByAuthorFirstName = task4.GetBookGroupedAuthorFirstName(books);
-        Console.WriteLine("Books grouped by the author's first name:");
+        List<Task4> booksGroupedByAuthorFirstName = global::Task4.GetBookGroupedAuthorFirstName(books);
+        Console.WriteLine(TextTask4.task4Part9);
         foreach (var book in booksGroupedByAuthorFirstName)
         {
-            Console.WriteLine($"- {book.title} by {book.author}");
+            Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
         }
-        Console.WriteLine();
+        Console.WriteLine(GeneralText.newLine);
     }
 }
 

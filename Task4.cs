@@ -1,37 +1,37 @@
 using System.Text.RegularExpressions;
 
-public class task4
+public class Task4
 {
     public string? title { get; set; }
     public int publication_year { get; set; }
     public string? author { get; set; }
     public string? isbn { get; set; }
 
-    public static List<task4> GetBooksStartingWithThe(List<task4> books)
+    public static List<Task4> GetBooksStartingWithThe(List<Task4> books)
     {
-        return books.Where(book => book.title?.StartsWith("The", StringComparison.OrdinalIgnoreCase) == true).ToList();
+        return books.Where(book => book.title?.StartsWith(TextTask4.task4Part1Query, StringComparison.OrdinalIgnoreCase) == true).ToList();
     }
 
-    public static List<task4> GetBooksByAuthorsWithTInName(List<task4> books)
+    public static List<Task4> GetBooksByAuthorsWithTInName(List<Task4> books)
     {
-        return books.Where(book => book.author?.IndexOf("t", StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+        return books.Where(book => book.author?.IndexOf(TextTask4.task4Part2Query, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
     }
 
-    public static int GetNumberOfBooksAfterYear(List<task4> books, int year)
+    public static int GetNumberOfBooksAfterYear(List<Task4> books, int year)
     {
         return books.Count(book => book.publication_year > year);
     }
 
-    public static int GetNumberOfBooksBeforeYear(List<task4> books, int year)
+    public static int GetNumberOfBooksBeforeYear(List<Task4> books, int year)
     {
         return books.Count(book => book.publication_year < year);
     }
 
-    public static Dictionary<string, List<string>> GetAuthorNamesWithISBN(List<task4> books, string authorFullName)
+    public static Dictionary<string, List<string>> GetAuthorNamesWithISBN(List<Task4> books, string authorFullName)
     {
         Dictionary<string, List<string>> authorNamesWithISBN = new Dictionary<string, List<string>>();
 
-        foreach (task4 book in books)
+        foreach (Task4 book in books)
         {
             if (book.author?.Equals(authorFullName, StringComparison.OrdinalIgnoreCase) == true)
             {
@@ -47,59 +47,59 @@ public class task4
         return authorNamesWithISBN;
     }
 
-    public static List<task4> GetBookInAlphabeticalOrderAscending(List<task4> books)
+    public static List<Task4> GetBookInAlphabeticalOrderAscending(List<Task4> books)
     {
         return books.OrderBy(book => book.title).ToList();
     }
 
-    public static List<task4> GetBookInAlphabeticalOrderDescending(List<task4> books)
+    public static List<Task4> GetBookInAlphabeticalOrderDescending(List<Task4> books)
     {
         return books.OrderByDescending(book => book.title).ToList();
     }
 
-    public static List<task4> GetBookInChronologicalOrderAscending(List<task4> books)
+    public static List<Task4> GetBookInChronologicalOrderAscending(List<Task4> books)
     {
         return books.OrderBy(book => book.publication_year).ToList();
     }
 
-    public static List<task4> GetBookInChronologicalOrderDescending(List<task4> books)
+    public static List<Task4> GetBookInChronologicalOrderDescending(List<Task4> books)
     {
         return books.OrderByDescending(book => book.publication_year).ToList();
     }
 
-    public static List<task4> GetBookGroupedAuthorLastName(List<task4> books)
+    public static List<Task4> GetBookGroupedAuthorLastName(List<Task4> books)
     {
         return books.OrderBy(book => GetLastNameWithoutBrackets(book.author)).ToList();
     }
 
     private static string GetLastNameWithoutBrackets(string author)
     {
-        string lastName = Regex.Replace(author, @"\([^()]*\)", ""); // Remove content within brackets
-        lastName = Regex.Replace(lastName, @"\s+", " ").Trim(); // Remove extra spaces
+        string lastName = Regex.Replace(author, TextTask4.task4RegexReplace, ""); // Remove content within brackets
+        lastName = Regex.Replace(lastName, TextTask4.task4RegexReplace, " ").Trim(); // Remove extra spaces
         return lastName?.Split(" ").Last();
     }
 
-    public static List<task4> GetBookGroupedAuthorFirstName(List<task4> books)
+    public static List<Task4> GetBookGroupedAuthorFirstName(List<Task4> books)
     {
         return books.OrderBy(book => GetFirstNameWithoutBrackets(book.author)).ToList();
     }
 
     private static string GetFirstNameWithoutBrackets(string author)
     {
-        string firstName = Regex.Replace(author, @"\([^()]*\)", ""); // Remove content within brackets
-        firstName = Regex.Replace(firstName, @"\s+", " ").Trim(); // Remove extra spaces
+        string firstName = Regex.Replace(author, TextTask4.task4RegexReplace, ""); // Remove content within brackets
+        firstName = Regex.Replace(firstName, GeneralText.extraSpace, " ").Trim(); // Remove extra spaces
         return firstName?.Split(" ").First();
     }
 
-    public static List<task4> GetBookGroupedAuthorFullName(List<task4> books)
+    public static List<Task4> GetBookGroupedAuthorFullName(List<Task4> books)
     {
         return books.OrderBy(book => GetFullNameNameWithoutBrackets(book.author)).ToList();
     }
 
     private static string GetFullNameNameWithoutBrackets(string author)
     {
-        string fullName = Regex.Replace(author, @"\([^()]*\)", ""); // Remove content within brackets
-        fullName = Regex.Replace(fullName, @"\s+", " ").Trim(); // Remove extra spaces
+        string fullName = Regex.Replace(author, TextTask4.task4RegexReplace, ""); // Remove content within brackets
+        fullName = Regex.Replace(fullName, GeneralText.extraSpace, " ").Trim(); // Remove extra spaces
         return fullName;
     }
 

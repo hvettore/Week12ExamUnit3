@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\vetto\\.nuget\\packages\\": {}
+    "C:\\Users\\Hugo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Programming\\Semester 4\\Week 2\\Week12ExamUnit3\\Week12ExamUnit3.csproj",
+      "projectUniqueName": "D:\\University\\UiA\\Semester 4\\Programming 2\\Week12ExamUnit3\\Week12ExamUnit3.csproj",
       "projectName": "Week12ExamUnit3",
-      "projectPath": "C:\\Programming\\Semester 4\\Week 2\\Week12ExamUnit3\\Week12ExamUnit3.csproj",
-      "packagesPath": "C:\\Users\\vetto\\.nuget\\packages\\",
-      "outputPath": "C:\\Programming\\Semester 4\\Week 2\\Week12ExamUnit3\\obj\\",
+      "projectPath": "D:\\University\\UiA\\Semester 4\\Programming 2\\Week12ExamUnit3\\Week12ExamUnit3.csproj",
+      "packagesPath": "C:\\Users\\Hugo\\.nuget\\packages\\",
+      "outputPath": "D:\\University\\UiA\\Semester 4\\Programming 2\\Week12ExamUnit3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vetto\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Hugo\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,4 +1,4 @@
-public static class task1
+public static class Task1
 {
     private const double inchesToMillimetersConversion = 25.4;
     private const double pi = 3.14159;
@@ -35,6 +35,6 @@ public static class task1
 
     public static string ReturnGreeting(string name)
     {
-        return "Good afternoon " + name + ". I hope you have a good day!";
+        return TextTask1.task1Part6Return1 + name + TextTask1.task1Part6Return2;
     }
 }
