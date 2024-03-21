@@ -1,10 +1,13 @@
 ﻿using System.Text.Json;
 
+
+
 class Program
 {
     static void Main()
     {
-        //Task1();
+        Console.Clear();
+        Task1();
         //Task2();
         //Task3();
         //Task4();
@@ -12,35 +15,35 @@ class Program
 
     static void Task1()
     {
-        Console.WriteLine("This is Task #1 of Exam Unit 3 \n");
+        Console.WriteLine(Text.task1Introduction);
 
-        Console.WriteLine("Enter Number to be Squared: ");
-        double inputNumberToSquare = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine(Text.task1Part1Question);
+        double inputNumberToSquare = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
         double squaredResult = task1.ReturnSquareNumber(inputNumberToSquare);
-        Console.WriteLine($"The square of {inputNumberToSquare} is " + squaredResult + "\n");
+        Console.WriteLine(Text.task1Part1Result + squaredResult + Text.newLine);
 
-        Console.WriteLine("Enter a length in Inches to be converted to Millimeters: ");
-        double inputLength = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter a length in inches to be converted to millimeters.");
+        double inputLength = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
         double inchesToMillimetersResult = task1.ReturnLengthInMillimeters(inputLength);
-        Console.WriteLine($"{inputLength} millimiters is " + inchesToMillimetersResult + " inches\n");
+        Console.WriteLine($"{inputLength} inches is " + inchesToMillimetersResult + " millimiters\n");
 
-        Console.WriteLine("Enter a Number to Find it's Root: ");
-        double inputNumberRoot = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter a number to find it's root.");
+        double inputNumberRoot = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
         double rootResult = task1.ReturnRootNumber(inputNumberRoot);
         Console.WriteLine($"The root of {inputNumberRoot} is " + rootResult + "\n");
 
-        Console.WriteLine("Enter Number to be Cubed: ");
-        double inputNumberToCube = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter number to be cubed.");
+        double inputNumberToCube = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
         double cubedResult = task1.ReturnCubedNumber(inputNumberToCube);
         Console.WriteLine($"The cube of {inputNumberToCube} is " + cubedResult + "\n");
 
-        Console.WriteLine("Enter Radius of a Circle: ");
-        double inputCircleRadius = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Enter radius of a circle.");
+        double inputCircleRadius = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
         double circleAreaResult = task1.ReturnCircleArea(inputCircleRadius);
         Console.WriteLine($"If a circle has a radius of {inputCircleRadius}, it's area will be " + circleAreaResult + "\n");
 
-        Console.WriteLine("Please Enter Your name: ");
-        string inputName = Console.ReadLine();
+        Console.WriteLine("Please enter your name.");
+        string inputName = InputChecker.GetString() ?? string.Empty;
         string greetingPhrase = task1.ReturnGreeting(inputName);
         Console.WriteLine(greetingPhrase);
     }
