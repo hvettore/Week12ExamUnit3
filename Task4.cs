@@ -40,7 +40,8 @@ public class Task4
                     authorNamesWithISBN[authorFullName] = new List<string>();
                 }
 
-                authorNamesWithISBN[authorFullName].Add(book.isbn);
+                string isbn = book.isbn ?? "";
+                authorNamesWithISBN[authorFullName].Add(isbn);
             }
         }
 
