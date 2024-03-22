@@ -49,7 +49,6 @@ public class InputChecker
                 Console.WriteLine(invalidString);
             }
         }
-
         return input;
     }
 
@@ -72,7 +71,6 @@ public class InputChecker
                 Console.WriteLine(invalidString);
             }
         }
-
         return input;
     }
 }

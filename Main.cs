@@ -1,7 +1,6 @@
 ﻿using System.Text.Json;
 class Program
 {
-    
     public static void Main(string[] args)
     {
         if (args.Length > 0 && args[0] == "-t")
@@ -125,7 +124,7 @@ class Program
             Console.WriteLine(GeneralText.newLine);
             new Prompt().WaitForEnterKey();
 
-              Console.Clear();
+            Console.Clear();
             List<Task4> booksByAuthorsWithTInName = global::Task4.GetBooksByAuthorsWithTInName(books);
             Console.WriteLine(TextTask4.task4Part2Prompt);
             foreach (var book in booksByAuthorsWithTInName)
@@ -171,7 +170,6 @@ class Program
 
             Console.Clear();
             string alphabeticallyChoice;
-
             do
             {
                 Console.WriteLine(TextTask4.task4Part6Prompt);
@@ -207,7 +205,6 @@ class Program
 
             Console.Clear();
             string chronologicallyChoice;
-
             do
             {
                 Console.WriteLine(TextTask4.task4Part7Prompt);

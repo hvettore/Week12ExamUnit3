@@ -72,34 +72,57 @@ public class Task4
         return books.OrderBy(book => GetLastNameWithoutBrackets(book.author)).ToList();
     }
 
-    private static string GetLastNameWithoutBrackets(string author)
+    private static string? GetLastNameWithoutBrackets(string? author)
     {
-        string lastName = Regex.Replace(author, TextTask4.task4RegexReplace, ""); // Remove content within brackets
-        lastName = Regex.Replace(lastName, TextTask4.task4RegexReplace, " ").Trim(); // Remove extra spaces
-        return lastName?.Split(" ").Last();
+        if (author == null)
+        {
+            return "";
+        }
+        string? lastName = Regex.Replace(author, TextTask4.task4RegexReplace, "");
+        if (lastName != null)
+        {
+            lastName = Regex.Replace(lastName, TextTask4.task4RegexReplace, " ").Trim();
+            return lastName.Split(" ").Last();
+        }
+        return null;
     }
+
 
     public static List<Task4> GetBookGroupedAuthorFirstName(List<Task4> books)
     {
         return books.OrderBy(book => GetFirstNameWithoutBrackets(book.author)).ToList();
     }
 
-    private static string GetFirstNameWithoutBrackets(string author)
+
+    private static string? GetFirstNameWithoutBrackets(string? author)
     {
-        string firstName = Regex.Replace(author, TextTask4.task4RegexReplace, ""); // Remove content within brackets
-        firstName = Regex.Replace(firstName, GeneralText.extraSpace, " ").Trim(); // Remove extra spaces
-        return firstName?.Split(" ").First();
+        if (author == null)
+        {
+            return "";
+        }
+        string? firstName = Regex.Replace(author, TextTask4.task4RegexReplace, "");
+        if (firstName != null)
+        {
+            firstName = Regex.Replace(firstName, GeneralText.extraSpace, " ").Trim();
+            return firstName.Split(" ").First();
+        }
+        return null;
     }
+
 
     public static List<Task4> GetBookGroupedAuthorFullName(List<Task4> books)
     {
         return books.OrderBy(book => GetFullNameNameWithoutBrackets(book.author)).ToList();
     }
 
-    private static string GetFullNameNameWithoutBrackets(string author)
+    private static string GetFullNameNameWithoutBrackets(string? author)
     {
-        string fullName = Regex.Replace(author, TextTask4.task4RegexReplace, ""); // Remove content within brackets
-        fullName = Regex.Replace(fullName, GeneralText.extraSpace, " ").Trim(); // Remove extra spaces
+        if (author == null)
+        {
+            return "";
+        }
+        string? fullName = Regex.Replace(author, TextTask4.task4RegexReplace, "");
+        fullName = Regex.Replace(fullName, GeneralText.extraSpace, " ").Trim();
         return fullName;
     }
 
