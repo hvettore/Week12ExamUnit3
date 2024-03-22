@@ -5,7 +5,7 @@ public class GeneralText
     public const string hifenSpace = "- ";
     public const string ascendingInput = "ascending";
     public const string descendingInput = "descending";
-    public const string commaSeparator = ",";
+    public const string commaSeparator = ", ";
     public const string extraSpace = @"\s+";
     public const string continuationPrompt = "Please press enter to continue.";
     public const string invalidJSON = "Failed to deserialize JSON data.";
