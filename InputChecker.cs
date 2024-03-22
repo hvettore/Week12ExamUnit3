@@ -2,6 +2,10 @@ using System;
 
 public class InputChecker
 {
+    public const string inputQuery = "Input: ";
+    public const string invalidDecimal = "Invalid input, please enter a number or decimal.";
+    public const string invalidString = "Invalid input, please enter a valid string without numbers or symbols.";
+    
     public static double GetNumberOrDecimal()
     {
         double result;
@@ -9,7 +13,7 @@ public class InputChecker
 
         while (true)
         {
-            Console.Write("Input: ");
+            Console.Write(inputQuery);
             input = Console.ReadLine() ?? string.Empty;
 
             if (double.TryParse(input, out result))
@@ -19,7 +23,7 @@ public class InputChecker
             else
             {
                 Console.Clear();
-                Console.WriteLine("Invalid input, please enter a number or decimal.");
+                Console.WriteLine(invalidDecimal);
             }
         }
 
@@ -32,7 +36,7 @@ public class InputChecker
 
         while (true)
         {
-            Console.Write("Name: ");
+            Console.Write(inputQuery);
             input = Console.ReadLine() ?? string.Empty;
 
             if (!string.IsNullOrEmpty(input) && input.All(char.IsLetter))
@@ -42,13 +46,33 @@ public class InputChecker
             else
             {
                 Console.Clear();
-                Console.WriteLine("Invalid input, please enter a valid name without numbers or symbols.");
+                Console.WriteLine(invalidString);
             }
         }
 
         return input;
     }
 
+    public static string GetStringWithSpaceAndParentheses()
+    {
+        string input;
 
+        while (true)
+        {
+            Console.Write(inputQuery);
+            input = Console.ReadLine() ?? string.Empty;
 
+            if (!string.IsNullOrEmpty(input) && input.All(c => char.IsLetter(c) || c == ' ' || c == '(' || c == ')'))
+            {
+                break;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine(invalidString);
+            }
+        }
+
+        return input;
+    }
 }

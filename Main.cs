@@ -5,9 +5,9 @@ class Program
     static void Main()
     {
         Console.Clear();
-        Task1();
-        Task2();
-        Task3();
+        //Task1();
+        //Task2();
+        //Task3();
         Task4();
     }
 
@@ -75,7 +75,7 @@ class Program
     static void Task3()
     {
         Console.Clear();
-        Console.WriteLine(TextTask3.task3Introduction + GeneralText.newLine);
+        Console.WriteLine(TextTask3.task3Introduction);
 
         string json = File.ReadAllText(TextTask3.task3JSONRead);
         Node? mainNode = JsonSerializer.Deserialize<Node>(json);
@@ -88,7 +88,7 @@ class Program
 
             Console.WriteLine(TextTask3.task3Part1 + sum);
             Console.WriteLine(TextTask3.task3Part2 + deepestLevel);
-            Console.WriteLine(TextTask3.task3Part3 + nodeCount + GeneralText.newLine);
+            Console.WriteLine(TextTask3.task3Part3 + nodeCount);
         }
         else
         {
@@ -104,138 +104,171 @@ class Program
         Console.WriteLine(TextTask4.task4Introduction + GeneralText.newLine);
 
         string json = File.ReadAllText(TextTask4.task4JSONRead);
-        List<Task4> books = JsonSerializer.Deserialize<List<Task4>>(json);
+        List<Task4>? books = JsonSerializer.Deserialize<List<Task4>>(json);
 
-        //Task 1: Return only books starting with `The`
-        List<Task4> booksStartingWithThe = global::Task4.GetBooksStartingWithThe(books);
-        Console.WriteLine(TextTask4.task4Part1Prompt);
-        foreach (var book in booksStartingWithThe)
+        if (books != null)
         {
-            Console.WriteLine(GeneralText.hifenSpace + book.title);
-        }
-        Console.WriteLine(GeneralText.newLine);
-        new Prompt().WaitForEnterKey();
-
-        //Task 2: Return only books written by authors with a 't' in their name
-        Console.Clear();
-        List<Task4> booksByAuthorsWithTInName = global::Task4.GetBooksByAuthorsWithTInName(books);
-        Console.WriteLine(TextTask4.task4Part2Prompt);
-        foreach (var book in booksByAuthorsWithTInName)
-        {
-            Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
-        }
-        Console.WriteLine(GeneralText.newLine);
-        new Prompt().WaitForEnterKey();
-
-        // Task 3: The number of books written after 1992
-        Console.Clear();
-        int numberOfBooksAfter1992 = global::Task4.GetNumberOfBooksAfterYear(books, 1992);
-        Console.WriteLine(TextTask4.task4Part3Prompt + numberOfBooksAfter1992 + GeneralText.newLine);
-
-        // Task 4: The number of books written before `2004`
-        int numberOfBooksBefore2004 = global::Task4.GetNumberOfBooksBeforeYear(books, 2004);
-        Console.WriteLine(TextTask4.task4Part4Prompt + numberOfBooksBefore2004 + GeneralText.newLine);
-        new Prompt().WaitForEnterKey();
-
-        // Task 5: Return isbn book numbers based on author input
-        Console.Clear();
-        Console.WriteLine(TextTask4.task4Part5Prompt);
-        string authorFullName = Console.ReadLine();
-        Dictionary<string, List<string>> authorNamesWithISBN = global::Task4.GetAuthorNamesWithISBN(books, authorFullName);
-        if (authorNamesWithISBN.ContainsKey(authorFullName))
-        {
-            Console.WriteLine(TextTask4.task4Part5Valid + authorFullName);
-            foreach (var isbn in authorNamesWithISBN[authorFullName])
+            // Task 1: Return only books starting with `The`
+            List<Task4> booksStartingWithThe = global::Task4.GetBooksStartingWithThe(books);
+            Console.WriteLine(TextTask4.task4Part1Prompt);
+            foreach (var book in booksStartingWithThe)
             {
-                Console.WriteLine(GeneralText.hifenSpace + isbn);
+                Console.WriteLine(GeneralText.hifenSpace + book.title);
             }
-        }
-        else
-        {
-            Console.WriteLine(TextTask4.task4Part5Invalid + authorFullName);
-        }
-        new Prompt().WaitForEnterKey();
+            Console.WriteLine(GeneralText.newLine);
+            new Prompt().WaitForEnterKey();
 
-        //Task 6: List books alphabetically assending or decendig 
-        Console.Clear();
-        Console.WriteLine(TextTask4.task4Part6Prompt);
-        string alphabeticallyChoice = Console.ReadLine();
-        if (alphabeticallyChoice == GeneralText.ascendingInput)
-        {
-            List<Task4> booksInAlphabeticalOrder = global::Task4.GetBookInAlphabeticalOrderAscending(books);
-            Console.WriteLine(TextTask4.task4Part6AscendingOutput);
-            foreach (var book in booksInAlphabeticalOrder)
+            // Task 2: Return only books written by authors with a 't' in their name
+            Console.Clear();
+            List<Task4> booksByAuthorsWithTInName = global::Task4.GetBooksByAuthorsWithTInName(books);
+            Console.WriteLine(TextTask4.task4Part2Prompt);
+            foreach (var book in booksByAuthorsWithTInName)
+            {
+                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
+            }
+            Console.WriteLine(GeneralText.newLine);
+            new Prompt().WaitForEnterKey();
+
+            // Task 3: The number of books written after 1992
+            Console.Clear();
+            int numberOfBooksAfter1992 = global::Task4.GetNumberOfBooksAfterYear(books, 1992);
+            Console.WriteLine(TextTask4.task4Part3Prompt + numberOfBooksAfter1992 + GeneralText.newLine);
+
+            // Task 4: The number of books written before `2004`
+            int numberOfBooksBefore2004 = global::Task4.GetNumberOfBooksBeforeYear(books, 2004);
+            Console.WriteLine(TextTask4.task4Part4Prompt + numberOfBooksBefore2004 + GeneralText.newLine);
+            new Prompt().WaitForEnterKey();
+
+            // Task 5: Return isbn book numbers based on author input
+            Console.Clear();
+            Console.WriteLine(TextTask4.task4Part5Prompt);
+            string authorFullName;
+            Dictionary<string, List<string>> authorNamesWithISBN;
+
+            do
+            {
+                authorFullName = InputChecker.GetStringWithSpaceAndParentheses() ?? string.Empty;
+                authorNamesWithISBN = global::Task4.GetAuthorNamesWithISBN(books, authorFullName);
+
+                if (authorNamesWithISBN.ContainsKey(authorFullName))
+                {
+                    Console.WriteLine(TextTask4.task4Part5Valid + authorFullName);
+                    foreach (var isbn in authorNamesWithISBN[authorFullName])
+                    {
+                        Console.WriteLine(GeneralText.hifenSpace + isbn);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine(TextTask4.task4Part5Invalid + authorFullName);
+                }
+            } while (!authorNamesWithISBN.ContainsKey(authorFullName));
+
+            new Prompt().WaitForEnterKey();
+
+            // Task 6: List books alphabetically ascending or descending
+            Console.Clear();
+            string alphabeticallyChoice;
+
+            do
+            {
+                Console.WriteLine(TextTask4.task4Part6Prompt);
+                alphabeticallyChoice = InputChecker.GetString() ?? string.Empty;
+
+                if (alphabeticallyChoice == GeneralText.ascendingInput)
+                {
+                    List<Task4> booksInAlphabeticalOrder = global::Task4.GetBookInAlphabeticalOrderAscending(books);
+                    Console.WriteLine(TextTask4.task4Part6AscendingOutput);
+                    foreach (var book in booksInAlphabeticalOrder)
+                    {
+                        Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
+                    }
+                    Console.WriteLine(GeneralText.newLine);
+                }
+                else if (alphabeticallyChoice == GeneralText.descendingInput)
+                {
+                    List<Task4> booksInAlphabeticalOrder = global::Task4.GetBookInAlphabeticalOrderDescending(books);
+                    Console.WriteLine(TextTask4.task4Part6DescendingOutput);
+                    foreach (var book in booksInAlphabeticalOrder)
+                    {
+                        Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
+                    }
+                    Console.WriteLine(GeneralText.newLine);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine(TextTask4.task4OrderInvalid);
+                }
+            } while (alphabeticallyChoice != GeneralText.ascendingInput && alphabeticallyChoice != GeneralText.descendingInput);
+
+            new Prompt().WaitForEnterKey();
+
+
+            Console.Clear();
+            string chronologicallyChoice;
+
+            do
+            {
+                Console.WriteLine(TextTask4.task4Part7Prompt);
+                chronologicallyChoice = InputChecker.GetString() ?? string.Empty;
+
+                if (chronologicallyChoice == GeneralText.ascendingInput)
+                {
+                    List<Task4> booksInChronologicalOrder = global::Task4.GetBookInChronologicalOrderAscending(books);
+                    Console.WriteLine(TextTask4.task4Part7AscendingOutput);
+                    foreach (var book in booksInChronologicalOrder)
+                    {
+                        Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4Part7Output + book.publication_year);
+                    }
+                    Console.WriteLine(GeneralText.newLine);
+                }
+                else if (chronologicallyChoice == GeneralText.descendingInput)
+                {
+                    List<Task4> booksInChronologicalOrder = global::Task4.GetBookInChronologicalOrderDescending(books);
+                    Console.WriteLine(TextTask4.task4Part7DescendingOutput);
+                    foreach (var book in booksInChronologicalOrder)
+                    {
+                        Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4Part7Output + book.publication_year);
+                    }
+                    Console.WriteLine(GeneralText.newLine);
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine(TextTask4.task4OrderInvalid);
+                }
+            } while (chronologicallyChoice != GeneralText.ascendingInput && chronologicallyChoice != GeneralText.descendingInput);
+
+            new Prompt().WaitForEnterKey();
+
+
+            // Task 8: List books grouped by author last name
+            Console.Clear();
+            List<Task4> booksGroupedByAuthorLastName = global::Task4.GetBookGroupedAuthorLastName(books);
+            Console.WriteLine(TextTask4.task4Part8);
+            foreach (var book in booksGroupedByAuthorLastName)
+            {
+                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
+            }
+            Console.WriteLine(GeneralText.newLine);
+            new Prompt().WaitForEnterKey();
+
+            // Task 9: List books grouped by author first name
+            Console.Clear();
+            List<Task4> booksGroupedByAuthorFirstName = global::Task4.GetBookGroupedAuthorFirstName(books);
+            Console.WriteLine(TextTask4.task4Part9);
+            foreach (var book in booksGroupedByAuthorFirstName)
             {
                 Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
             }
             Console.WriteLine(GeneralText.newLine);
         }
-        else if (alphabeticallyChoice == GeneralText.descendingInput)
-        {
-            List<Task4> booksInAlphabeticalOrder = global::Task4.GetBookInAlphabeticalOrderDescending(books);
-            Console.WriteLine(TextTask4.task4Part6DescendingOutput);
-            foreach (var book in booksInAlphabeticalOrder)
-            {
-                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
-            }
-            Console.WriteLine(GeneralText.newLine);
-        }
         else
         {
-            Console.WriteLine(TextTask4.task4OrderInvalid);
+            Console.WriteLine(GeneralText.invalidJSON);
         }
-        new Prompt().WaitForEnterKey();
-
-        //Task 7: List books chronologically assending or decendig
-        Console.Clear();
-        Console.WriteLine(TextTask4.task4Part7Prompt);
-        string chronologicallyChoice = Console.ReadLine();
-        if (chronologicallyChoice == GeneralText.ascendingInput)
-        {
-            List<Task4> booksInChronologicalOrder = global::Task4.GetBookInChronologicalOrderAscending(books);
-            Console.WriteLine(TextTask4.task4Part7AscendingOutput);
-            foreach (var book in booksInChronologicalOrder)
-            {
-                Console.WriteLine($"- {book.title} written in {book.publication_year}");
-            }
-            Console.WriteLine(GeneralText.newLine);
-        }
-        else if (chronologicallyChoice == GeneralText.descendingInput)
-        {
-            List<Task4> booksInChronologicalOrder = global::Task4.GetBookInChronologicalOrderDescending(books);
-            Console.WriteLine(TextTask4.task4Part7DescendingOutput);
-            foreach (var book in booksInChronologicalOrder)
-            {
-                Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4Part7Output + book.publication_year);
-            }
-            Console.WriteLine(GeneralText.newLine);
-        }
-        else
-        {
-            Console.WriteLine(TextTask4.task4OrderInvalid);
-        }
-        new Prompt().WaitForEnterKey();
-
-        //Task 8: List books grouped by author last name
-        Console.Clear();
-        List<Task4> booksGroupedByAuthorLastName = global::Task4.GetBookGroupedAuthorLastName(books);
-        Console.WriteLine(TextTask4.task4Part8);
-        foreach (var book in booksGroupedByAuthorLastName)
-        {
-            Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
-        }
-        Console.WriteLine(GeneralText.newLine);
-        new Prompt().WaitForEnterKey();
-
-        //Task 9: Lits books grouped by author first name
-        Console.Clear();
-        List<Task4> booksGroupedByAuthorFirstName = global::Task4.GetBookGroupedAuthorFirstName(books);
-        Console.WriteLine(TextTask4.task4Part9);
-        foreach (var book in booksGroupedByAuthorFirstName)
-        {
-            Console.WriteLine(GeneralText.hifenSpace + book.title + TextTask4.task4BookBy + book.author);
-        }
-        Console.WriteLine(GeneralText.newLine);
     }
+
 }
 
