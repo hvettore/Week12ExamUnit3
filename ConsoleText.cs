@@ -8,6 +8,7 @@ public class GeneralText
     public const string commaSeparator = ",";
     public const string extraSpace = @"\s+";
     public const string continuationPrompt = "Please press enter to continue.";
+    public const string invalidJSON = "Failed to deserialize JSON data.";
 }
 public class TextTask1
 {

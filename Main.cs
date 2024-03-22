@@ -38,7 +38,7 @@ class Program
         Console.WriteLine(TextTask1.task1Part5Question);
         double inputCircleRadius = Convert.ToDouble(InputChecker.GetNumberOrDecimal());
         double circleAreaResult = global::Task1.ReturnCircleArea(inputCircleRadius);
-        Console.WriteLine(TextTask1.task1Part5Result+ circleAreaResult + GeneralText.newLine);
+        Console.WriteLine(TextTask1.task1Part5Result + circleAreaResult + GeneralText.newLine);
 
         Console.WriteLine(TextTask1.task1Part6Question);
         string inputName = InputChecker.GetString() ?? string.Empty;
@@ -53,15 +53,24 @@ class Program
         Console.WriteLine(TextTask2.task2Introduction + GeneralText.newLine);
 
         string json = File.ReadAllText(TextTask2.task2JSONRead);
-        List<object> data = JsonSerializer.Deserialize<List<object>>(json);
+        List<object>? data = JsonSerializer.Deserialize<List<object>>(json);
 
-        List<int> numbers = new List<int>();
-        global::Task2.Flatten(data, numbers);
+        if (data != null)
+        {
+            List<int> numbers = new List<int>();
+            global::Task2.Flatten(data, numbers);
 
-        string numbersString = string.Join(GeneralText.commaSeparator, numbers);
-        Console.WriteLine($"[{numbersString}]");
+            string numbersString = string.Join(GeneralText.commaSeparator, numbers);
+            Console.WriteLine($"[{numbersString}]");
+        }
+        else
+        {
+            Console.WriteLine(GeneralText.invalidJSON);
+        }
+
         new Prompt().WaitForEnterKey();
     }
+
 
     static void Task3()
     {
@@ -69,17 +78,26 @@ class Program
         Console.WriteLine(TextTask3.task3Introduction + GeneralText.newLine);
 
         string json = File.ReadAllText(TextTask3.task3JSONRead);
-        Node mainNode = JsonSerializer.Deserialize<Node>(json);
+        Node? mainNode = JsonSerializer.Deserialize<Node>(json);
 
-        int sum = global::Task3.ValueSum(mainNode);
-        int deepestLevel = global::Task3.LocateDeepestLevel(mainNode);
-        int nodeCount = global::Task3.NodeCount(mainNode);
-      
-        Console.WriteLine(TextTask3.task3Part1 + sum);
-        Console.WriteLine(TextTask3.task3Part2 + deepestLevel);
-        Console.WriteLine(TextTask3.task3Part3 + nodeCount + GeneralText.newLine);
+        if (mainNode != null)
+        {
+            int sum = global::Task3.ValueSum(mainNode);
+            int deepestLevel = global::Task3.LocateDeepestLevel(mainNode);
+            int nodeCount = global::Task3.NodeCount(mainNode);
+
+            Console.WriteLine(TextTask3.task3Part1 + sum);
+            Console.WriteLine(TextTask3.task3Part2 + deepestLevel);
+            Console.WriteLine(TextTask3.task3Part3 + nodeCount + GeneralText.newLine);
+        }
+        else
+        {
+            Console.WriteLine(GeneralText.invalidJSON);
+        }
+
         new Prompt().WaitForEnterKey();
     }
+
 
     static void Task4()
     {
